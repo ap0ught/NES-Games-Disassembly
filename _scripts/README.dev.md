@@ -143,8 +143,8 @@ rm -f *.o PRG_ROM.bin copy_*
 
 **Size Validation:**
 ```bash
-output_rom_zize=`wc -c ${NES_OUTPUT_SIMPLE_NAME}.nes | awk '{print $1}'`
-if [ "${output_rom_zize}" -eq ${NES_OUTPUT_FILE_SIZE} ]; then
+output_rom_size=`wc -c ${NES_OUTPUT_SIMPLE_NAME}.nes | awk '{print $1}'`
+if [ "${output_rom_size}" -eq ${NES_OUTPUT_FILE_SIZE} ]; then
     # Success path
 else
     # Error handling and potential backup restoration
