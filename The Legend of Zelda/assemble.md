@@ -67,7 +67,7 @@ Both scripts compile multiple bank files using the CA65 assembler:
 **Banks compiled:**
 - `copy_bank_00.asm` through `copy_bank_06.asm`
 - `copy_bank_FF.asm`
-- Additional banks: `bank_s1.asm`, `bank_s2.asm`, `bank___BF50_BFF9.asm` (Unix may skip these)
+- Additional banks: `bank_s1.asm`, `bank_s2.asm`, `bank___BF50_BFF9.asm` (On Unix, these banks are skipped if they are listed in the `NES_IGNORE_COMPILE_ASM_ARRAY` configuration parameter)
 
 **Assembly options:**
 - **Fast mode**: `ca65 -U <file>.asm` (no debug info)
