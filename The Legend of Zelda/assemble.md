@@ -220,10 +220,10 @@ The Legend of Zelda/
 ## Technical Details
 
 ### ROM Specifications
-- **Total size**: 131,088 bytes
+- **Total size**: 139,280 bytes (16 bytes header + 128KB PRG ROM + 8KB CHR ROM)
 - **Header**: 16 bytes (NES format)
 - **PRG ROM**: 128KB (8 banks × 16KB)
-- **CHR ROM**: Variable size
+- **CHR ROM**: 8KB (1 bank × 8KB)
 - **Mapper**: Depends on original game
 
 ### Assembly Toolchain
