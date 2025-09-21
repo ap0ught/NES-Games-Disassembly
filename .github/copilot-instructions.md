@@ -14,15 +14,17 @@ Always reference these instructions first and fallback to search or bash command
   tar xzf V2.19.tar.gz && cd cc65-2.19
   make && sudo make install PREFIX=/usr/local
   ```
-  Build takes 55 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
+  Build takes 55-64 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
 - Install Lua 5.3: `sudo apt install -y lua5.3 && sudo ln -sf /usr/bin/lua5.3 /usr/bin/lua`
 - Verify installation: `cc65 --version && ca65 --version && ld65 --version && lua -v`
+  Expected output shows cc65 V2.18 or V2.19 (both work identically)
 
 ### Build individual games
 - Navigate to any game directory (e.g., `cd "Excitebike"`)
 - Run: `bash assemble.sh`
 - Build times: 0.07-1.6 seconds per game. NEVER CANCEL builds.
 - Output: `_[gamename].nes` file with correct SHA-1 checksum verification
+- Successful build shows: "Original SHA-1 checksum detected" message
 
 ### Build all games
 - All 25 games build successfully in ~7 seconds total
@@ -35,6 +37,7 @@ Always reference these instructions first and fallback to search or bash command
     fi
   done
   ```
+- Verify success: `find . -name "_*.nes" | wc -l` should return 25
 
 ### File structure understanding
 - Each game directory contains:
@@ -60,6 +63,7 @@ Always reference these instructions first and fallback to search or bash command
   bash assemble.sh
   ls -la _excitebike.nes  # Should show 24592 bytes
   ```
+- Check for successful completion: Look for "Original SHA-1 checksum detected" message
 
 ### Testing scenarios
 - Single game build test: Navigate to any game directory, run `bash assemble.sh`, verify success message and ROM generation
@@ -81,6 +85,8 @@ Always reference these instructions first and fallback to search or bash command
 - Each game script sources common functions from `_scripts/` directory
 - Build scripts automatically check for and install missing dependencies (cc65, lua)
 - Windows .exe files in game directories are for Windows builds - ignore on Linux
+- Preprocessing step removes disassembler formatting and creates `copy_*` files
+- Temporary files (`copy_*`, `*.o`, `PRG_ROM.bin`) are automatically cleaned up
 
 ### Repository navigation
 ```
@@ -107,9 +113,9 @@ Repository root structure:
 ```
 
 ### Timing expectations
-- Single game build: 0.07-1.6 seconds (average 0.287 seconds)
-- All 25 games: ~7 seconds total
-- cc65 compilation from source: ~55 seconds
+- Single game build: 0.07-1.6 seconds (typical: ~0.08 seconds)
+- All 25 games: ~7 seconds total (measured: 7.173 seconds)
+- cc65 compilation from source: ~55-64 seconds
 - Dependency installation: 60-120 seconds
 - NEVER CANCEL any build operations - they complete very quickly
 
@@ -118,3 +124,10 @@ Repository root structure:
 - Common issues: Missing dependencies (auto-resolved by scripts)
 - Windows executables (.exe/.dll) in game directories can be ignored on Linux
 - Use `bash assemble.sh` explicitly rather than `sh assemble.sh` to avoid shell compatibility issues
+- If lua symlink fails: `sudo ln -sf /usr/bin/lua5.3 /usr/bin/lua` and retry
+
+### Common troubleshooting
+- "lua: command not found" → Ensure symlink: `sudo ln -sf /usr/bin/lua5.3 /usr/bin/lua`
+- "cc65: command not found" → Install cc65 following dependency installation steps
+- Build hangs → DO NOT CANCEL - builds complete in seconds, wait for completion
+- Wrong file size → Check for error messages in build output, dependencies may be missing
