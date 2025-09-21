@@ -85,7 +85,7 @@ Game-specific `assemble.sh` scripts configure the build process using these vari
 ## Dependencies
 
 The scripts automatically handle installation of:
-- **cc65 v2.19**: 6502 cross-assembler toolchain (note: some systems may install v2.18)
+- **cc65 v2.19**: 6502 cross-assembler toolchain (the scripts target v2.19, but some system package managers may only provide v2.18)
 - **Lua 5.3.x**: Script preprocessing engine
 - **System packages**: readline-dev (Linux), build tools
 
