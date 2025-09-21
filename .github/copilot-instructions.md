@@ -86,23 +86,23 @@ Always reference these instructions first and fallback to search or bash command
 ```
 Repository root structure:
 .
-├── README.md                    # Project documentation
-├── syntax_6502.xml             # Notepad++ syntax highlighting
-├── _scripts/                   # Shared build scripts
-│   ├── env.sh                  # Environment setup
-│   ├── os_support.sh           # OS compatibility
-│   ├── assemble_header.sh      # Build preparation
-│   ├── assemble_standard.sh    # Main assembly
-│   └── assemble_footer.sh      # Cleanup and verification
-├── [Game Name]/               # Individual game directories
-│   ├── assemble.sh            # Game build script
-│   ├── bank_*.asm            # Assembly source files
-│   ├── bank_ram.inc          # RAM definitions
-│   ├── bank_val.inc          # Constants
-│   ├── preparations.lua      # Lua preprocessor
-│   ├── header.bin           # NES header
-│   ├── ld65.cfg            # Linker config
-│   └── CHR_ROM.chr         # Graphics data (optional)
+├── README.md                     # Project documentation
+├── syntax_6502.xml              # Notepad++ syntax highlighting
+├── _scripts/                    # Shared build scripts
+│   ├── env.sh                   # Environment setup
+│   ├── os_support.sh            # OS compatibility
+│   ├── assemble_header.sh       # Build preparation
+│   ├── assemble_standard.sh     # Main assembly
+│   └── assemble_footer.sh       # Cleanup and verification
+├── [Game Name]/                 # Individual game directories
+│   ├── assemble.sh              # Game build script
+│   ├── bank_*.asm               # Assembly source files
+│   ├── bank_ram.inc             # RAM definitions
+│   ├── bank_val.inc             # Constants
+│   ├── preparations.lua         # Lua preprocessor
+│   ├── header.bin               # NES header
+│   ├── ld65.cfg                 # Linker config
+│   └── CHR_ROM.chr              # Graphics data (optional)
 └── [24 more game directories]
 ```
 
