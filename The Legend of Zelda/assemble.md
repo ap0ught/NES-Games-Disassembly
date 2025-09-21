@@ -12,8 +12,8 @@ Both scripts serve the same purpose: assembling the disassembled 6502 assembly c
 ## Prerequisites
 
 ### Windows (assemble.bat)
-- **CC65 toolchain**: ca65 assembler and ld65 linker (included in the directory)
-- **Lua 5.3**: lua53.exe and lua53.dll (included in the directory)
+- **CC65 toolchain**: ca65 assembler and ld65 linker (must be installed separately)
+- **Lua 5.3**: lua53.exe and lua53.dll (must be installed separately)
 - **Windows Command Prompt** with batch file support
 
 ### Unix/Linux/macOS (assemble.sh)
